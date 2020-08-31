@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem maker="ccr-plus" type="TRA_0_4">
+    <source dir="polynomial" file="polynomial" code="100">
+        <language cmd="gcc -o polynomial polynomial.c -lm -static -static" file="polynomial.c" time="10"/>
+        <language cmd="g++ -o polynomial polynomial.cpp -lm -static -static" file="polynomial.cpp" time="10"/>
+        <language cmd="fpc polynomial.pas" file="polynomial.pas" time="10"/>
+    </source>
+    <task output="polynomial.out" checker="fulltext" input="polynomial.in" time="10">
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial1.in" out="polynomial1.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial2.in" out="polynomial2.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial3.in" out="polynomial3.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial4.in" out="polynomial4.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial5.in" out="polynomial5.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial6.in" out="polynomial6.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial7.in" out="polynomial7.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial8.in" out="polynomial8.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial9.in" out="polynomial9.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="1" mem="256" in="polynomial10.in" out="polynomial10.out"/>
+        </subtask>
+    </task>
+</problem>

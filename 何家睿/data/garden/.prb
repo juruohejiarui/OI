@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem type="TRA_0_4" maker="pcdialog">
+    <source dir="garden" file="garden" code="100">
+        <language cmd="fpc garden.pas" file="garden.pas"/>
+        <language cmd="g++ -o garden garden.cpp -lm" file="garden.cpp"/>
+        <language cmd="gcc -o garden garden.c -lm" file="garden.c"/>
+    </source>
+    <task output="garden.out" input="garden.in" io="0" checker="全文比较">
+        <subtask score="10">
+            <point in="garden1-6.in.txt" out="garden1-6.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden1-8.in.txt" out="garden1-8.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden1-9.in.txt" out="garden1-9.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden2-12.in.txt" out="garden2-12.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden2-13.in.txt" out="garden2-13.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden2-14.in.txt" out="garden2-14.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden3-11.in.txt" out="garden3-11.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden3-12.in.txt" out="garden3-12.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden3-13.in.txt" out="garden3-13.out.txt" time="1" mem="512"/>
+        </subtask>
+        <subtask score="10">
+            <point in="garden3-14.in.txt" out="garden3-14.out.txt" time="1" mem="512"/>
+        </subtask>
+    </task>
+</problem>

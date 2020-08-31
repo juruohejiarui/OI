@@ -1,0 +1,21 @@
+@echo off
+sort.exe < sort1.in > sort1.out
+sort.exe < sort2.in > sort2.out
+sort.exe < sort3.in > sort3.out
+sort.exe < sort4.in > sort4.out
+sort.exe < sort5.in > sort5.out
+sort.exe < sort6.in > sort6.out
+sort.exe < sort7.in > sort7.out
+sort.exe < sort8.in > sort8.out
+sort.exe < sort9.in > sort9.out
+sort.exe < sort10.in > sort10.out
+sort.exe < sort11.in > sort11.out
+sort.exe < sort12.in > sort12.out
+sort.exe < sort13.in > sort13.out
+sort.exe < sort14.in > sort14.out
+sort.exe < sort15.in > sort15.out
+sort.exe < sort16.in > sort16.out
+sort.exe < sort17.in > sort17.out
+sort.exe < sort18.in > sort18.out
+sort.exe < sort19.in > sort19.out
+sort.exe < sort20.in > sort20.out

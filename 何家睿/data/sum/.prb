@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem maker="ccr-plus" type="TRA_0_4">
+    <source dir="sum" file="sum" code="100">
+        <language cmd="gcc -o sum sum.c -lm -static -static -static -static" file="sum.c" time="10"/>
+        <language cmd="g++ -o sum sum.cpp -lm -static -static -static -static" file="sum.cpp" time="10"/>
+        <language cmd="fpc sum.pas" file="sum.pas" time="10"/>
+    </source>
+    <task output="sum.out" checker="fulltext" input="sum.in" time="10">
+        <subtask score="10">
+            <point time="4" mem="512" in="sum1.in" out="sum1.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum2.in" out="sum2.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum3.in" out="sum3.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum4.in" out="sum4.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum5.in" out="sum5.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum6.in" out="sum6.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum7.in" out="sum7.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum8.in" out="sum8.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum9.in" out="sum9.out"/>
+        </subtask>
+        <subtask score="10">
+            <point time="4" mem="512" in="sum10.in" out="sum10.out"/>
+        </subtask>
+    </task>
+</problem>
