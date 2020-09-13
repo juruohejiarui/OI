@@ -1,6 +1,6 @@
 # FFT
 
-这个东西比较复杂，可能需要看得久一点
+这个东西比较复杂，可能需要看得久一点，而且本人写的比较草率，极有可能让大家看不懂。
 
 ## 问题
 
@@ -287,3 +287,93 @@ int main() {
 
 ### 原根
 
+首先回顾我们使用了单位根的哪些性质：
+1. $(\omega_n^1)^k=\omega_n^k$
+2. $\omega_n^{k\%n}=\omega_n^k$
+3. $\omega_{2n}^{2k}=\omega_{n}^{k}$
+4. $\omega_{n}^{k+\frac{n}{2}}=-\omega_n^k$
+5. $\sum\limits_{i=1}^{n-1}\omega_n^i=0$
+
+一个原根是在模$p$意义下的一个奇怪的数$g$，这个模数$p$可以表示为$k2^t+1$。
+
+而原根$g$满足$g^{0}～g^{p-1}$都不相同。
+
+现在用原根表示一个单位根，即：
+$$
+\omega_n^1=g^{\frac{p-1}{n}}
+$$
+那么，对于显然单位根的第一条性质，原根也是可以满足的。
+现在对其他四条性质也证明一下：
+
+### 性质2
+$$
+\omega_n^{k}=(g^{\frac{p-1}{n}})^{k}=g^{k\frac{p-1}{n}}
+$$
+根据费马小定理，进行一些简单的变换：
+$$
+\begin{aligned}
+g^{k\frac{p-1}{n}}  
+    &=g^{\frac{k}{n}\%1\times(p-1)}\\
+    &=g^{\frac{k\%n}{n}\times(p-1)}\\
+    &=(g^{\frac{p-1}{n}})^{k\%n}\\
+    &=\omega_n^{k\%n}
+\end{aligned}
+$$
+### 性质3
+$$
+\begin{aligned}
+\omega_{2n}^{2k}
+    &=(g^{\frac{p-1}{2n}})^{2k}\\
+    &=g^{(p-1)\times\frac{2k}{2n}}\\
+    &=g^{\frac{p-1}{n}}
+\end{aligned}
+$$
+### 性质4
+$$
+\begin{aligned}
+\omega_n^{n+\frac{n}{2}}
+    &=\omega_n^{k}\times \omega_n^{\frac{n}{2}}\\
+    &=\omega_n^{k}\times (-1)\\
+    &=-\omega_n^{k}
+\end{aligned}
+$$
+至于为什么$\omega_n^{\frac{n}{2}}=-1$而不是$1$，则可以根据原根互不相同的原因得到。
+### 性质5
+这个本质上是一个等比数列求和，可以得到：
+$$
+\sum_{i=1}^n\omega_n^i=\frac{\omega_n^{n-1}-1}{\omega_n^1-1}=0
+$$
+
+
+可以发现，原根一样可以满足所有需要用到的单位根的性质。那么我们就可以愉快地将``FFT``的代码随手改掉一些，变成``NTT``。
+
+这里安利一下[大佬的原根表](http://blog.miskcoo.com/2014/07/fft-prime-table)（懒人福利）
+
+```cpp
+LL f1[maxm << 1], f2[maxm << 1], NTT_g, NTT_invg, invf1_len;
+int f1_len, f2_len, lsp[maxm << 1];
+void NTT_init() {
+    f2_len += f1_len, NTT_g = 3, NTT_invg = qpow(NTT_g, MOD - 2);
+    for (f1_len = 1; f1_len <= f2_len; f1_len <<= 1) ;
+    invf1_len = qpow(f1_len, MOD - 2);
+    for (int i = 0; i < f1_len; i++) lsp[i] = (lsp[i>>1]>>1) | ((i&1)?(f1_len>>1):0);
+}
+void NTT_calc(LL* f, int len, int flag) {
+    for (int i = 0; i < len; i++) if (i < lsp[i]) swap(f[i], f[lsp[i]]);
+    for (int i = 2; i <= len; i <<= 1) {
+        LL w1 = qpow((flag ? NTT_g : NTT_invg), (MOD - 1) / i);
+        int lsl = (i >> 1);
+        for (int st = 0; st < len; st += i) {
+            LL buf = 1;
+            for (int k = st; k < st + lsl; k++) {
+                LL tmp = buf * f[k + lsl] % MOD;
+                f[k + lsl] = (f[k] - tmp + MOD) % MOD;
+                f[k] = (f[k] + tmp) % MOD;
+                buf = buf * w1 % MOD;
+            }
+        }
+    }
+    if (!flag) for (int i = 0; i < len; i++) f[i] = f[i] * invf1_len % MOD;
+}
+
+```
